@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <string>
 #include <filesystem>
+#include <vector>
 
 void print_help() {
     std::cout << "mylang <input> [-o <output>]\n\n";
@@ -73,6 +74,17 @@ int main(int argc, char* argv[]) {
        std::cerr << "error: cannot open '" << input_file << "'\n";
        return 1;
     }
+
+   auto lines = std::vector<std::string>();
+   std::string line;
+
+   while (std::getline(in, line)) {
+       lines.push_back(line);
+   }
+
+   for (int i = 0; i < lines.size(); i++) {
+       std::cout << lines[i] << std::endl;
+   }
 
    return 0;
 }
